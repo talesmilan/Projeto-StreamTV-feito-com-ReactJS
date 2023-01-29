@@ -1,25 +1,25 @@
-import { fetchTendencia } from "../fetchexports"
-import { useState, useEffect } from "react"
-import RenderFilme from "../RenderFilme"
+import RenderFilme from '../RenderFilme'
+import {useEffect, useState} from 'react'
+import { fetchFilmes } from '../fetchexports'
 import {Button} from 'reactstrap'
 import imagem from '../../imagens/Loading_icon.gif'
 
-const PaginaInical = () => {
+const Comedia = () => {
 
-    const [filmes, setFilmes] = useState({results: ""})
+    const [comedia, setComedia] = useState({results: []})
 
     const [page, setPage] = useState(1)
 
-  
 
     useEffect(() => {
-        const retorno = fetchTendencia(page)
-        retorno.then(response => setFilmes(response))
+        const recebe = fetchFilmes(page, 35)
+        recebe.then(response => setComedia(response) )
+
     }, [page])
 
-    
+
     const pageUp = () => {
-        if (filmes.total_pages > page) {
+        if (comedia.total_pages > page) {
             setPage(page + 1)
         }
     }
@@ -30,13 +30,12 @@ const PaginaInical = () => {
         }
     }
 
-    if (filmes.results.length !== 0) {
-        console.log(filmes)
+    if (comedia.results.length !== 0) {
         return (
             <div>
-                <h1 className="mx-5 my-4">Destaques</h1>
+                <h1 className="mx-5 my-4">Filmes de Comédia</h1>
                     <div className='row offset-1 col-10'>
-                        {filmes.results.map(filme => {
+                        {comedia.results.map(filme => {
                             return (<RenderFilme filme={filme} />)
                         })}
                         <Button onClick={pageDown} className={`col-3 p-2 mb-4 bg-primary`}>Anterior</Button>
@@ -47,9 +46,9 @@ const PaginaInical = () => {
         )
     } else {
         return (
-            <div className="text-center"><img src={imagem} alt="Carregando"></img> </div>
+            <div className="text-center"><img src={imagem} alt="Carregando"></img></div>
         )
     }
 }
 
-export default PaginaInical
+export default Comedia

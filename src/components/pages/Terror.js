@@ -1,25 +1,24 @@
-import { fetchTendencia } from "../fetchexports"
-import { useState, useEffect } from "react"
-import RenderFilme from "../RenderFilme"
+import RenderFilme from '../RenderFilme'
+import {useEffect, useState} from 'react'
+import { fetchFilmes } from '../fetchexports'
 import {Button} from 'reactstrap'
 import imagem from '../../imagens/Loading_icon.gif'
 
-const PaginaInical = () => {
+const Terror = () => {
 
-    const [filmes, setFilmes] = useState({results: ""})
+    const [terror, setTerror] = useState({results: []})
 
     const [page, setPage] = useState(1)
 
-  
-
     useEffect(() => {
-        const retorno = fetchTendencia(page)
-        retorno.then(response => setFilmes(response))
+        const recebe = fetchFilmes(page, 27)
+        recebe.then(response => setTerror(response) )
+
     }, [page])
 
-    
+
     const pageUp = () => {
-        if (filmes.total_pages > page) {
+        if (terror.total_pages > page) {
             setPage(page + 1)
         }
     }
@@ -30,13 +29,12 @@ const PaginaInical = () => {
         }
     }
 
-    if (filmes.results.length !== 0) {
-        console.log(filmes)
+    if (terror.results.length !== 0) {
         return (
             <div>
-                <h1 className="mx-5 my-4">Destaques</h1>
+                <h1 className="mx-5 my-4">Filmes de Terror</h1>
                     <div className='row offset-1 col-10'>
-                        {filmes.results.map(filme => {
+                        {terror.results.map(filme => {
                             return (<RenderFilme filme={filme} />)
                         })}
                         <Button onClick={pageDown} className={`col-3 p-2 mb-4 bg-primary`}>Anterior</Button>
@@ -47,9 +45,9 @@ const PaginaInical = () => {
         )
     } else {
         return (
-            <div className="text-center"><img src={imagem} alt="Carregando"></img> </div>
+            <div className="text-center"><img src={imagem} alt="Carregando"></img></div>
         )
     }
 }
 
-export default PaginaInical
+export default Terror

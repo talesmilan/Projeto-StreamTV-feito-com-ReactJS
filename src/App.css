@@ -2,6 +2,17 @@
 
 .marcador-jumbotron {
   background: url("./imagens/Pipoca_Cinema_FB.jpg") no-repeat;
-  background-size: 100%;
+  background-size: auto;
   color: gray;
+}
+footer {
+  background-color: #ADD8E6;
+  padding: 10px;
+}
+.img-filmes {
+  scale: 0.97;
+}
+.img-filmes:hover {
+  scale: 1.07;
+  transition: 0.5s;
 }

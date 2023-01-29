@@ -27,7 +27,7 @@ function NavBar(args) {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink className="nav-link" to="/">Página Incial</NavLink>
+              <NavLink className="nav-link" to="/">Página Inicial</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -37,8 +37,12 @@ function NavBar(args) {
               <NavLink className="nav-link m-0 p-0" to="/filmes/acao">
                 <DropdownItem>Ação</DropdownItem>
               </NavLink>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/comedia">
                 <DropdownItem>Comédia</DropdownItem>
+              </NavLink>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/terror">
                 <DropdownItem>Terror</DropdownItem>
+              </NavLink>
                 <DropdownItem>Ficção</DropdownItem>
                 <DropdownItem>Drama</DropdownItem>
                 <DropdownItem>Romance</DropdownItem>
