@@ -5,28 +5,28 @@ import imagem from '../../imagens/Loading_icon.gif'
 import { useParams } from 'react-router-dom'
 import Botoes from '../Botoes'
 
-const Acao = () => {
+const Documentario = () => {
 
-    const [acao, setAcao] = useState({results: []})
+    const [documentario, setDocumentario] = useState({results: []})
 
 
     const idPage = useParams()
 
     useEffect(() => {
-        const recebe = fetchFilmes(idPage.idPage, 28)
-        recebe.then(response => setAcao(response) )
+        const recebe = fetchFilmes(idPage.idPage, 99)
+        recebe.then(response => setDocumentario(response) )
 
     }, [idPage.idPage])
 
-    if (acao.results.length !== 0) {
+    if (documentario.results.length !== 0) {
         return (
             <div>
-                <h1 className="mx-5 my-4">Filmes de Ação</h1>
+                <h1 className="mx-5 my-4">Filmes de Documentário</h1>
                     <div className='row offset-1 col-10'>
-                        {acao.results.map(filme => {
+                        {documentario.results.map(filme => {
                             return (<RenderFilme filme={filme} />)
                         })}
-                        <Botoes idPage={idPage.idPage} total={acao.total_pages} tipo="acao" />
+                        <Botoes idPage={idPage.idPage} total={documentario.total_pages} tipo="documentario" />
                     </div>
             </div>
         )
@@ -37,4 +37,4 @@ const Acao = () => {
     }
 }
 
-export default Acao
+export default Documentario

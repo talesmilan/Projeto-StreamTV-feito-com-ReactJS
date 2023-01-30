@@ -1,33 +1,21 @@
 import RenderFilme from '../RenderFilme'
 import {useEffect, useState} from 'react'
 import { fetchFilmes } from '../fetchexports'
-import {Button} from 'reactstrap'
 import imagem from '../../imagens/Loading_icon.gif'
+import { useParams } from 'react-router-dom'
+import Botoes from '../Botoes'
 
 const Terror = () => {
 
     const [terror, setTerror] = useState({results: []})
 
-    const [page, setPage] = useState(1)
+    const idPage = useParams()
 
     useEffect(() => {
-        const recebe = fetchFilmes(page, 27)
+        const recebe = fetchFilmes(idPage.idPage, 27)
         recebe.then(response => setTerror(response) )
 
-    }, [page])
-
-
-    const pageUp = () => {
-        if (terror.total_pages > page) {
-            setPage(page + 1)
-        }
-    }
-
-    const pageDown = () => {
-        if (page > 1) {
-            setPage(page - 1)
-        }
-    }
+    }, [idPage.idPage])
 
     if (terror.results.length !== 0) {
         return (
@@ -37,9 +25,7 @@ const Terror = () => {
                         {terror.results.map(filme => {
                             return (<RenderFilme filme={filme} />)
                         })}
-                        <Button onClick={pageDown} className={`col-3 p-2 mb-4 bg-primary`}>Anterior</Button>
-                        <div className='col-6'></div>
-                        <Button onClick={pageUp} className={`col-3 p-2 mb-4 bg-primary`}>Próximo</Button>
+                        <Botoes idPage={idPage.idPage} total={terror.total_pages} tipo="terror" />
                     </div>
             </div>
         )

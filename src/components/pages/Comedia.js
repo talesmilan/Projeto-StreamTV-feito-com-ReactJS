@@ -1,34 +1,22 @@
 import RenderFilme from '../RenderFilme'
 import {useEffect, useState} from 'react'
 import { fetchFilmes } from '../fetchexports'
-import {Button} from 'reactstrap'
 import imagem from '../../imagens/Loading_icon.gif'
+import { useParams} from 'react-router-dom'
+import Botoes from '../Botoes'
 
 const Comedia = () => {
 
     const [comedia, setComedia] = useState({results: []})
 
-    const [page, setPage] = useState(1)
 
+    const idPage = useParams()
 
     useEffect(() => {
-        const recebe = fetchFilmes(page, 35)
+        const recebe = fetchFilmes(idPage.idPage, 35)
         recebe.then(response => setComedia(response) )
 
-    }, [page])
-
-
-    const pageUp = () => {
-        if (comedia.total_pages > page) {
-            setPage(page + 1)
-        }
-    }
-
-    const pageDown = () => {
-        if (page > 1) {
-            setPage(page - 1)
-        }
-    }
+    }, [idPage.idPage])
 
     if (comedia.results.length !== 0) {
         return (
@@ -38,9 +26,7 @@ const Comedia = () => {
                         {comedia.results.map(filme => {
                             return (<RenderFilme filme={filme} />)
                         })}
-                        <Button onClick={pageDown} className={`col-3 p-2 mb-4 bg-primary`}>Anterior</Button>
-                        <div className='col-6'></div>
-                        <Button onClick={pageUp} className={`col-3 p-2 mb-4 bg-primary`}>Próximo</Button>
+                            <Botoes idPage={idPage.idPage} total={comedia.total_pages} tipo="comedia" />
                     </div>
             </div>
         )

@@ -34,21 +34,37 @@ function NavBar(args) {
                 Filmes
               </DropdownToggle>
               <DropdownMenu>
-              <NavLink className="nav-link m-0 p-0" to="/filmes/acao">
+              <NavLink className="nav-link m-0 p-0" to="/filmes/acao/1">
                 <DropdownItem>Ação</DropdownItem>
               </NavLink>
-              <NavLink className="nav-link m-0 p-0" to="/filmes/comedia">
+              <NavLink className="nav-link m-0 p-0" to="/filmes/comedia/1">
                 <DropdownItem>Comédia</DropdownItem>
               </NavLink>
-              <NavLink className="nav-link m-0 p-0" to="/filmes/terror">
+              <NavLink className="nav-link m-0 p-0" to="/filmes/terror/1">
                 <DropdownItem>Terror</DropdownItem>
               </NavLink>
-                <DropdownItem>Ficção</DropdownItem>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/drama/1">
                 <DropdownItem>Drama</DropdownItem>
+              </NavLink>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/romance/1">
                 <DropdownItem>Romance</DropdownItem>
-                <DropdownItem>Suspence</DropdownItem>
+              </NavLink>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/aventura/1">
+                <DropdownItem>Aventura</DropdownItem>
+              </NavLink>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/animacao/1">
+                <DropdownItem>Animação</DropdownItem>
+              </NavLink>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/fantasia/1">
+                <DropdownItem>Fantasia</DropdownItem>
+              </NavLink>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/familia/1">
+                <DropdownItem>Família</DropdownItem>
+              </NavLink>
+              <NavLink className="nav-link m-0 p-0" to="/filmes/documentario/1">
+                <DropdownItem>Documentário</DropdownItem>
+              </NavLink>
                 <DropdownItem divider />
-                <DropdownItem>Recomendados</DropdownItem>
                 <DropdownItem>Top Filmes</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
