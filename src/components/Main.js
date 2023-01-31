@@ -34,6 +34,7 @@ import SeriesInfantil from "./pages/series/SeriesInfantil"
 import TopSeries from "./pages/series/TopSeries"
 import BuscarFilme from "./pages/filmes/BuscarFilme"
 import BuscarSerie from "./pages/series/BuscaSerie"
+import Assinar from "./pages/Assinar"
 
 const Main = () => {
 
@@ -46,6 +47,7 @@ const Main = () => {
                     <Route path="/" element={<PaginaInicial />} />
                     <Route path="/contato" element={<Contato />} />
                     <Route path="/sobre" element={<Sobre />} />
+                    <Route path="/assinar" element={<Assinar />} />
                     <Route path="/filmes/acao/:idPage" element={<Acao />} />
                     <Route path="/filmes/comedia/:idPage" element={<Comedia />} />
                     <Route path="/filmes/terror/:idPage" element={<Terror />} />
