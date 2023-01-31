@@ -32,6 +32,8 @@ import SeriesGuerra from "./pages/series/SeriesGuerra"
 import SeriesDocumentario from "./pages/series/SeriesDocumentario"
 import SeriesInfantil from "./pages/series/SeriesInfantil"
 import TopSeries from "./pages/series/TopSeries"
+import BuscarFilme from "./pages/filmes/BuscarFilme"
+import BuscarSerie from "./pages/series/BuscaSerie"
 
 const Main = () => {
 
@@ -58,6 +60,7 @@ const Main = () => {
                     <Route path="/filmes/ficcao-cientifica/:idPage" element={<FiccaoCientifica />} />
                     <Route path="/filmes/documentario/:idPage" element={<Documentario />} />
                     <Route path="/filmes/top-filmes/:idPage" element={<TopFilmes />} />
+                    <Route path="/filmes/buscar/:idPage" element={<BuscarFilme />} />
                     <Route path="/filme/:idFilme" element={<Filme/>} />
                     <Route path="/series/acao-e-aventura/:idPage" element={<SeriesAcao />} />
                     <Route path="/series/comedia/:idPage" element={<SeriesComedia />} />
@@ -70,6 +73,7 @@ const Main = () => {
                     <Route path="/series/guerra-e-politica/:idPage" element={<SeriesGuerra />} />
                     <Route path="/series/fantasia-e-ficcao-cientifica/:idPage" element={<SeriesFantasia />} />
                     <Route path="/series/top-series/:idPage" element={<TopSeries />} />
+                    <Route path="/series/buscar/:idPage" element={<BuscarSerie />} />
                     <Route path="/serie/:idSerie" element={<Serie/>} />
                 </Routes>
                 <Footer />

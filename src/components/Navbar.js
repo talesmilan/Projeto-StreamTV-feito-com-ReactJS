@@ -77,6 +77,9 @@ function NavBar(args) {
                 <NavLink className="nav-link m-0 p-0" to="/filmes/top-filmes/1">
                   <DropdownItem>Top Filmes</DropdownItem>
                 </NavLink>
+                <NavLink className="nav-link m-0 p-0" to="/filmes/buscar/1">
+                  <DropdownItem>Buscar</DropdownItem>
+                </NavLink>
               </DropdownMenu>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
@@ -117,6 +120,9 @@ function NavBar(args) {
                 <DropdownItem divider />
                 <NavLink className="nav-link m-0 p-0" to="/series/top-series/1">
                   <DropdownItem>Top Séries</DropdownItem>
+                </NavLink>
+                <NavLink className="nav-link m-0 p-0" to="/series/buscar/1">
+                  <DropdownItem>Buscar</DropdownItem>
                 </NavLink>
               </DropdownMenu>
             </UncontrolledDropdown>

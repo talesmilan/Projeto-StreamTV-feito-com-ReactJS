@@ -6,7 +6,6 @@ export const fetchFilmes = (page, genero) => {
 
     return fetch(`${API_BASE}/discover/movie?api_key=${API_KEY}&language=pt-BR&sort_by=popularity.desc&include_adult=false&page=${page}&with_genres=${genero}&with_watch_monetization_types=flatrate`)
                 .then(response => response.json())
-                .then(response => response)
 
 
 }
@@ -15,8 +14,21 @@ export const fetchSeries = (page, genero) => {
 
     return fetch(`${API_BASE}/discover/tv?api_key=${API_KEY}&language=pt-BR&sort_by=popularity.desc&page=${page}&with_genres=${genero}&with_watch_monetization_types=flatrate`)
                 .then(response => response.json())
-                .then(response => response)
 
+
+}
+
+export const fetchBuscarFilme = (busca, page) => {
+
+    return fetch(`${API_BASE}/search/movie?api_key=${API_KEY}&language=pt-BR&query=${busca}&page=${page}&include_adult=false`)
+                .then(response => response.json())
+
+}
+
+export const fetchBuscarSerie = (busca, page) => {
+
+    return fetch(`${API_BASE}/search/tv?api_key=${API_KEY}&language=pt-BR&query=${busca}&page=${page}&include_adult=false`)
+                .then(response => response.json())
 
 }
 
