@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom'
-import { fetchFilme } from '../../fetchexports'
+import { fetchFilme,fetchBuscaVideo } from '../../fetchexports'
 import { useEffect, useState, Fragment } from 'react'
 import {Button} from 'reactstrap'
 import imagem from '../../../imagens/Loading_icon.gif'
@@ -9,15 +9,15 @@ const Filme = () => {
 
     const filmeId = useParams()
     console.log(filmeId.idFilme)
-    const [filme, setFilme] = useState({})
+    const [filme, setFilme] = useState({results: []})
 
     useEffect(() => {
         const recebe = fetchFilme(filmeId.idFilme)
         recebe.then(response => setFilme(response))
+
     }, [])
 
 
-    console.log(filme)
     if (typeof filme.genres !== "undefined") {
         return (
             <div>
