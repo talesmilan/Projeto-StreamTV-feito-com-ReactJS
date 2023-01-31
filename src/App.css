@@ -16,3 +16,6 @@ footer {
   scale: 1.07;
   transition: 0.5s;
 }
+.botao:hover {
+  color: white;
+}

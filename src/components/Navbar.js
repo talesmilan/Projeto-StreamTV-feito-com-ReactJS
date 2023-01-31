@@ -10,14 +10,56 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
+  Button,
+  Label,
+  Input,
+  Form,
+  FormGroup,
+  Modal,
+  ModalHeader,
+  ModalBody
 } from 'reactstrap';
 import {NavLink} from 'react-router-dom'
+import MensagemErros from './MensagemErros';
 
 function NavBar(args) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const [isModalLoguinOpen, setIsModalLoguinOpen] = useState(false)
+
+  const [erros, setErros] = useState([])
+
+  const modalLoguin = () => {
+    setIsModalLoguinOpen(!isModalLoguinOpen)  
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+
+    const user = document.querySelector('#username').value
+
+    const senha = document.querySelector("#password").value
+
+    const lembrar = document.querySelector("#remember").checked
+
+    let error = []
+    if (user.length === 0) {
+      error.push("Você precisa prencher o usuário.")
+    }
+    if (senha.length === 0) {
+      error.push("Você precisa prencher a senha.")
+    }
+
+    setErros(error)
+    if (error.length === 0) {
+      alert(`Usuário: ${user}\nSenha: ${senha}\nSe lembrar de mim? ${lembrar}`)
+      modalLoguin()
+    }
+
+  }
+
 
   return (
     <div>
@@ -133,9 +175,45 @@ function NavBar(args) {
               <NavLink className="nav-link" to="/sobre">Sobre</NavLink>
             </NavItem>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+          <Nav className="ms-auto" navbar>
+            <NavItem className='m-1'>
+              <NavLink className="nav-link m-0 p-0" to="/assinar">
+                <Button className='bg-primary' outline>
+                  Assinar
+                </Button>
+              </NavLink>
+            </NavItem>
+            <NavItem className='m-1'>
+              <Button className='bg-primary' outline onClick={modalLoguin}>
+                Login
+              </Button>
+            </NavItem>
+          </Nav>
         </Collapse>
       </Navbar>
+      <Modal isOpen={isModalLoguinOpen} toggle={modalLoguin} >
+        <ModalHeader toggle={modalLoguin}>Login</ModalHeader>
+          <ModalBody>
+            <MensagemErros erros={erros} />
+            <Form onSubmit={handleLogin}>
+              <FormGroup>
+                <Label htmlFor="username">Nome do usuário</Label>
+                <Input type="text" id="username" name="username" required />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="password">Senha</Label>
+                <Input type="password" id="password" name="password" required/>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                <Input type="checkbox" name="remember" id="remember" />
+                  Se lembrar de mim?
+                </Label>
+              </FormGroup>
+              <Button className='mt-3' type="submit" value="submit" color='primary'>Login</Button>
+            </Form>
+          </ModalBody>
+        </Modal>
     </div>
   );
 }

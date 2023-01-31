@@ -37,7 +37,7 @@ const PaginaInical = () => {
                 <h1 className="mx-5 my-4">Destaques</h1>
                     <div className='row offset-1 col-10'>
                         {filmes.results.map(filme => {
-                            return (<RenderFilme filme={filme} />)
+                            return (<RenderFilme key={filme.id} filme={filme} />)
                         })}
                         <Button onClick={pageDown} className={`col-3 p-2 mb-4 bg-primary`}>Anterior</Button>
                         <div className='col-6'></div>
