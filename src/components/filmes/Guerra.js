@@ -1,31 +1,31 @@
-import RenderFilme from '../RenderFilme'
+import RenderFilme from '../../RenderFilme'
 import {useEffect, useState} from 'react'
-import { fetchFilmes } from '../fetchexports'
+import { fetchFilmes } from '../../fetchexports'
 import imagem from '../../imagens/Loading_icon.gif'
 import { useParams } from 'react-router-dom'
-import Botoes from '../Botoes'
+import Botoes from '../../Botoes'
 
-const Terror = () => {
+const Guerra = () => {
 
-    const [terror, setTerror] = useState({results: []})
+    const [guerra, setGuerra] = useState({results: []})
 
     const idPage = useParams()
 
     useEffect(() => {
-        const recebe = fetchFilmes(idPage.idPage, 27)
-        recebe.then(response => setTerror(response) )
+        const recebe = fetchFilmes(idPage.idPage, 10752)
+        recebe.then(response => setGuerra(response) )
 
     }, [idPage.idPage])
 
-    if (terror.results.length !== 0) {
+    if (guerra.results.length !== 0) {
         return (
             <div>
-                <h1 className="mx-5 my-4">Filmes de Terror</h1>
+                <h1 className="mx-5 my-4">Filmes de Guerra</h1>
                     <div className='row offset-1 col-10'>
-                        {terror.results.map(filme => {
+                        {guerra.results.map(filme => {
                             return (<RenderFilme key={filme.id} filme={filme} />)
                         })}
-                        <Botoes idPage={idPage.idPage} total={terror.total_pages} tipo="filmes/terror" />
+                        <Botoes idPage={idPage.idPage} total={guerra.total_pages} tipo="filmes/guerra" />
                     </div>
             </div>
         )
@@ -36,4 +36,4 @@ const Terror = () => {
     }
 }
 
-export default Terror
+export default Guerra

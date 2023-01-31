@@ -1,9 +1,9 @@
-import RenderFilme from '../RenderFilme'
+import RenderFilme from '../../RenderFilme'
 import {useEffect, useState} from 'react'
-import { fetchFilmes } from '../fetchexports'
-import imagem from '../../imagens/Loading_icon.gif'
+import { fetchFilmes } from '../../fetchexports'
+import imagem from '../../../imagens/Loading_icon.gif'
 import { useParams } from 'react-router-dom'
-import Botoes from '../Botoes'
+import Botoes from '../../Botoes'
 
 const Fantasia = () => {
 
@@ -12,7 +12,7 @@ const Fantasia = () => {
     const idPage = useParams()
 
     useEffect(() => {
-        const recebe = fetchFilmes(idPage.idPage, 16)
+        const recebe = fetchFilmes(idPage.idPage, 14)
         recebe.then(response => setFantasia(response) )
 
     }, [idPage.idPage])
@@ -24,9 +24,9 @@ const Fantasia = () => {
                 <h1 className="mx-5 my-4">Filmes de Fantasia</h1>
                     <div className='row offset-1 col-10'>
                         {fantasia.results.map(filme => {
-                            return (<RenderFilme filme={filme} />)
+                            return (<RenderFilme key={filme.id} filme={filme} />)
                         })}
-                        <Botoes idPage={idPage.idPage} total={fantasia.total_pages} tipo="fantasia" />
+                        <Botoes idPage={idPage.idPage} total={fantasia.total_pages} tipo="filmes/fantasia" />
                     </div>
             </div>
         )

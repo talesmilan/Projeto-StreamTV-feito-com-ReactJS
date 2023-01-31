@@ -1,9 +1,9 @@
-import RenderFilme from '../RenderFilme'
+import RenderFilme from '../../RenderFilme'
 import {useEffect, useState} from 'react'
-import { fetchFilmes } from '../fetchexports'
-import imagem from '../../imagens/Loading_icon.gif'
+import { fetchFilmes } from '../../fetchexports'
+import imagem from '../../../imagens/Loading_icon.gif'
 import { useParams } from 'react-router-dom'
-import Botoes from '../Botoes'
+import Botoes from '../../Botoes'
 
 const Familia = () => {
 
@@ -13,7 +13,7 @@ const Familia = () => {
     const idPage = useParams()
 
     useEffect(() => {
-        const recebe = fetchFilmes(idPage.idPage, 12)
+        const recebe = fetchFilmes(idPage.idPage, 10751)
         recebe.then(response => setFamilia(response) )
 
     }, [idPage.idPage])
@@ -22,12 +22,12 @@ const Familia = () => {
     if (familia.results.length !== 0) {
         return (
             <div>
-                <h1 className="mx-5 my-4">Filmes de Família</h1>
+                <h1 className="mx-5 my-4">Filmes para assistir com a Família</h1>
                     <div className='row offset-1 col-10'>
                         {familia.results.map(filme => {
-                            return (<RenderFilme filme={filme} />)
+                            return (<RenderFilme key={filme.id} filme={filme} />)
                         })}
-                        <Botoes idPage={idPage.idPage} total={familia.total_pages} tipo="familia" />
+                        <Botoes idPage={idPage.idPage} total={familia.total_pages} tipo="filmes/familia" />
                     </div>
             </div>
         )

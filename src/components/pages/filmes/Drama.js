@@ -1,9 +1,9 @@
-import RenderFilme from '../RenderFilme'
+import RenderFilme from '../../RenderFilme'
 import {useEffect, useState} from 'react'
-import { fetchFilmes } from '../fetchexports'
-import imagem from '../../imagens/Loading_icon.gif'
+import { fetchFilmes } from '../../fetchexports'
+import imagem from '../../../imagens/Loading_icon.gif'
 import { useParams } from 'react-router-dom'
-import Botoes from '../Botoes'
+import Botoes from '../../Botoes'
 
 const Drama = () => {
 
@@ -23,9 +23,9 @@ const Drama = () => {
                 <h1 className="mx-5 my-4">Filmes de Drama</h1>
                     <div className='row offset-1 col-10'>
                         {drama.results.map(filme => {
-                            return (<RenderFilme filme={filme} />)
+                            return (<RenderFilme key={filme.id} filme={filme} />)
                         })}
-                        <Botoes idPage={idPage.idPage} total={drama.total_pages} tipo="drama" />
+                        <Botoes idPage={idPage.idPage} total={drama.total_pages} tipo="filmes/drama" />
                     </div>
             </div>
         )

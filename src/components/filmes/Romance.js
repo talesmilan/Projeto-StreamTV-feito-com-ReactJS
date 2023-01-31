@@ -1,9 +1,9 @@
-import RenderFilme from '../RenderFilme'
+import RenderFilme from '../../RenderFilme'
 import {useEffect, useState} from 'react'
-import { fetchFilmes } from '../fetchexports'
+import { fetchFilmes } from '../../fetchexports'
 import imagem from '../../imagens/Loading_icon.gif'
 import { useParams } from 'react-router-dom'
-import Botoes from '../Botoes'
+import Botoes from '../../Botoes'
 
 const Romance = () => {
 
@@ -23,9 +23,9 @@ const Romance = () => {
                 <h1 className="mx-5 my-4">Filmes de Romance</h1>
                     <div className='row offset-1 col-10'>
                         {romance.results.map(filme => {
-                            return (<RenderFilme filme={filme} />)
+                            return (<RenderFilme key={filme.id} filme={filme} />)
                         })}
-                        <Botoes idPage={idPage.idPage} total={romance.total_pages} tipo="romance" />
+                        <Botoes idPage={idPage.idPage} total={romance.total_pages} tipo="filmes/romance" />
                     </div>
             </div>
         )

@@ -1,8 +1,8 @@
 import {useParams} from 'react-router-dom'
-import { fetchSerie } from '../fetchexports'
+import { fetchSerie } from '../../fetchexports'
 import { useEffect, useState, Fragment } from 'react'
 import {Button} from 'reactstrap'
-import imagem from '../../imagens/Loading_icon.gif'
+import imagem from '../../../imagens/Loading_icon.gif'
 
 const Serie = () => {
 
