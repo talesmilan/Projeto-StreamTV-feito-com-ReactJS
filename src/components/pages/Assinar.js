@@ -14,13 +14,14 @@ const Assinar = () => {
         cpf: "",
         usuario: "",
         senha: "",
+        password: "",
         estado: "",
         cidade: "",
         bairro: "",
         rua: "",
         numero: "",
         credito: "",
-        digito: "",
+        digitos: "",
         vencimento: "",
         promocoes: false
 
@@ -33,7 +34,7 @@ const Assinar = () => {
 
         const error = []
 
-        if (dadosCadastro.nome === "" || dadosCadastro.email === "" || dadosCadastro.cpf === "" || dadosCadastro.usuario === "" || dadosCadastro.senha === "" || dadosCadastro.estado === "" || dadosCadastro.cidade === "" || dadosCadastro.bairro === "" || dadosCadastro.rua === "" || dadosCadastro.numero === "" || dadosCadastro.credito === "" || dadosCadastro.digitos === "" || dadosCadastro.vencimento === "") {
+        if (dadosCadastro.nome === "" || dadosCadastro.email === "" || dadosCadastro.cpf === "" || dadosCadastro.usuario === "" || dadosCadastro.senha === "" || dadosCadastro.estado === "" || dadosCadastro.cidade === "" || dadosCadastro.bairro === "" || dadosCadastro.rua === "" || dadosCadastro.numero === "" || dadosCadastro.credito === "" || dadosCadastro.digitos === "" || dadosCadastro.vencimento === "" || dadosCadastro.password === "") {
             error.push("Todos os campos devem ser preenchidos.")
         }
         if (dadosCadastro.nome.length !== 0 && (dadosCadastro.nome.length < 5 || dadosCadastro.nome.length > 40)) {
@@ -58,8 +59,14 @@ const Assinar = () => {
         if (dadosCadastro.senha.length !== 0 && (dadosCadastro.senha.length < 6 || dadosCadastro.senha.length > 10)) {
             error.push('A senha deve ter entre 6 a 10 digitos.')
         }
+        if (dadosCadastro.senha.length !== 0 && dadosCadastro.senha !== dadosCadastro.password) {
+            error.push('Para confirmar a senha você deve digitar a senha que você criou duas vezes corretamente.')
+        }
         if (dadosCadastro.credito.length !== 0 && !validaCartao(dadosCadastro.credito)) {
             error.push('O cartão de crédito não é válido.')
+        }
+        if (dadosCadastro.digitos.length !== 0 && dadosCadastro.digitos.length !== 3) {
+            error.push('Os digítos do cartão de crédito precisam ser sempre 3.')
         }
 
         setErros(error)
@@ -113,6 +120,10 @@ const Assinar = () => {
                         <Input type="password" name="senha" id="senha" placeholder="Crie uma senha de 6 a 10 digitos" onChange={handleOnChange} value={dadosCadastro.senha} required />
                     </FormGroup>
                     <FormGroup>
+                        <Label for="password">Confirme sua senha</Label>
+                        <Input type="password" name="password" id="password" placeholder="Digite novamente a senha que você criou" onChange={handleOnChange} value={dadosCadastro.password} required />
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="estado">Estado</Label>
                         <Input type="select" name="estado" id="estado"
                             onChange={handleOnChange} value={dadosCadastro.estado} required>
@@ -145,7 +156,7 @@ const Assinar = () => {
                     </FormGroup>
                     <FormGroup className='row'>
                         <div className='col-12 col-sm-6'>
-                        <Label for="bairro">Número do Cartão de crédito</Label>
+                        <Label for="credito">Número do Cartão de crédito</Label>
                         <Input type="number" name="credito" id="credito" placeholder="Digite o número de seu cartão de crédito" onChange={handleOnChange} value={dadosCadastro.credito} required />
                         </div>
                         <div className='col-12 col-sm-2'>
@@ -153,7 +164,7 @@ const Assinar = () => {
                             <Input type="number" name="digitos" id="digitos" onChange={handleOnChange} value={dadosCadastro.digitos} required />
                         </div>
                         <div className='col-12 col-sm-4'>
-                            <Label for="digitos">Data de Vencimento</Label>
+                            <Label for="vencimento">Data de Vencimento</Label>
                             <Input type="text" name="vencimento" id="vencimento" placeholder="Digite a data de vencimento" onChange={handleOnChange} value={dadosCadastro.vencimento} required />
                         </div>
                     </FormGroup>
