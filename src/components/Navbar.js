@@ -63,7 +63,7 @@ function NavBar(args) {
 
   return (
     <div>
-      <Navbar color="primary" expand="md">
+      <Navbar color="primary" dark={true} expand="md">
         <NavbarBrand href="/">StreamTV</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

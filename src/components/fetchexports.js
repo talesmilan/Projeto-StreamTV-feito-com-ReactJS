@@ -21,8 +21,6 @@ export const fetchFilmes = (page, genero) => {
             .then(response => response.json())
             .catch(error => console.log(error.message))
                 
-
-
 }
 
 export const fetchSeries = (page, genero) => {
